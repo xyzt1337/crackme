@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #333;
+        }
+        .dl-box {
+            width: 600px;
+            height: 300px;
+            margin: 100px auto;
+            border: 1px solid white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            background-color: whitesmoke;
+            overflow: hidden;
+        }
+        .dl-box a {
+            outline: none;
+            text-decoration: none;
+            width: 180px;
+            height: 42px;
+            background-color: white;
+            color: dodgerblue;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 1px solid dodgerblue;
+            border-radius: 21px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: .2s;
+        }
+        .dl-box a:hover {
+            color: white;
+            background-color: dodgerblue;
+        }
+        @media (max-width: 600px) {
+            .dl-box {
+                width: 80%;
+                height: 200px;
+            }
+        }
+    </style>
+    <script src="jquery-3.5.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            const p = new URLSearchParams(window.location.search);
+            const filename = p.get('filename');
+            if (filename !== null && filename.match(/^(\w|\d|\.)*$/)) {
+                $('#filename').text(filename);
+                $('#url').attr('href',filename);
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="dl-box">
+        <h1 id="filename">NULL</h1>
+        <a id="url" href="#" download>DOWNLOAD</a>
+    </div>
+</body>
+</html>
